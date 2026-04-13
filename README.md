@@ -53,6 +53,10 @@ assert_eq!(data.duration(), std::time::Duration::from_secs(5));
 |-----------------|-------|
 | 0.1             | 0.18  |
 
+## CI
+
+Woodpecker CI on Codeberg runs `cargo build`, `cargo test`, `cargo clippy`, and `cargo fmt --check` on every push and pull request.
+
 ## License
 
 Licensed under either of
