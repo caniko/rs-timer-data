@@ -1,6 +1,6 @@
 {
   inputs = {
-    rs-harbor.url = "git+https://codeberg.org/caniko/rs-harbor.git?ref=trunk&rev=9bfa8bdb0ecb22d7bc11448665f7fbaebae7a759";
+    rs-harbor.url = "git+https://codeberg.org/caniko/rs-harbor.git?ref=trunk&rev=c26b735eede8078f795651c4a9cbf0be8733b221";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -41,9 +41,8 @@
             overlays = [ rust-overlay.overlays.default ];
           };
 
-          rustToolchain = pkgs.rust-bin.nightly.latest.default.override {
-            extensions = [ "rust-src" "rust-analyzer" "rustfmt" "rustc-codegen-cranelift-preview" ];
-          };
+          toolchain = rs-harbor.lib.mkToolchain { inherit pkgs; toolchainProfile = "stable"; };
+          rustToolchain = toolchain.rustToolchain;
         in
         {
           default = pkgs.mkShell {

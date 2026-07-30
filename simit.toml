@@ -6,4 +6,4 @@ runner = "codefloe-global"
 
 [ci.pages]
 repo = "caniko/rs-timer-data"
-source_branch = "main"
+source_branch = "trunk"
