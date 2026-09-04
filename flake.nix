@@ -1,6 +1,7 @@
 {
   inputs = {
-    rs-harbor.url = "git+ssh://git@github.com/caniko/rs-harbor.git?ref=trunk&rev=05cc4f162b55fa904b687db1821e2463fa813e50";
+    harbor-rs.url = "git+ssh://git@github.com/caniko/harbor-rs.git?ref=trunk&rev=05cc4f162b55fa904b687db1821e2463fa813e50";
+    rs-harbor.follows = "harbor-rs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -12,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, rs-harbor, rust-overlay, plinth }:
+  outputs = { self, nixpkgs, harbor-rs, rust-overlay, plinth }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -41,7 +42,7 @@
             overlays = [ rust-overlay.overlays.default ];
           };
 
-          toolchain = rs-harbor.lib.mkToolchain { inherit pkgs; toolchainProfile = "stable"; };
+          toolchain = harbor-rs.lib.mkToolchain { inherit pkgs; toolchainProfile = "stable"; };
           rustToolchain = toolchain.rustToolchain;
         in
         {
