@@ -10,11 +10,11 @@ href = "#overview"
 
 [[nav]]
 label = "Source"
-href = "ssh://git@codeberg.org/caniko/rs-timer-data.git"
+href = "ssh://git@github.com/caniko/rs-timer-data.git"
 
 [[footer_links]]
 label = "Source"
-href = "ssh://git@codeberg.org/caniko/rs-timer-data.git"
+href = "ssh://git@github.com/caniko/rs-timer-data.git"
 
 [[pages]]
 slug = "index"
@@ -29,7 +29,7 @@ subtitle = "Serializer-independent data types for Bevy's `Timer`."
 
 [[pages.sections.ctas]]
 label = "View source"
-href = "ssh://git@codeberg.org/caniko/rs-timer-data.git"
+href = "ssh://git@github.com/caniko/rs-timer-data.git"
 primary = true
 
 [[pages.sections]]
