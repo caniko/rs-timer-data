@@ -69,10 +69,7 @@ pub enum TimerModeData {
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum TimerDataError {
     /// Elapsed time exceeds duration on a non-repeating timer.
-    ElapsedExceedsDuration {
-        elapsed: u64,
-        duration: u64,
-    },
+    ElapsedExceedsDuration { elapsed: u64, duration: u64 },
 }
 
 impl fmt::Display for TimerDataError {
@@ -90,7 +87,12 @@ impl fmt::Display for TimerDataError {
 
 impl TimerData {
     /// Create a new `TimerData`.
-    pub fn new(duration_nanos: u64, elapsed_nanos: u64, finished: bool, mode: TimerModeData) -> Self {
+    pub fn new(
+        duration_nanos: u64,
+        elapsed_nanos: u64,
+        finished: bool,
+        mode: TimerModeData,
+    ) -> Self {
         Self {
             duration: duration_nanos,
             elapsed: elapsed_nanos,
@@ -421,7 +423,12 @@ mod tests {
 
     #[test]
     fn test_validate_repeating_allows_overflow() {
-        let data = TimerData::new(1_000_000_000, 5_000_000_000, false, TimerModeData::Repeating);
+        let data = TimerData::new(
+            1_000_000_000,
+            5_000_000_000,
+            false,
+            TimerModeData::Repeating,
+        );
         assert!(data.validate().is_ok());
     }
 
