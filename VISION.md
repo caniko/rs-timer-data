@@ -51,5 +51,6 @@ are build, CI, and metadata maintenance.
 
 ## Place in the fleet
 
-No canix consumer was found. Canix records the project only in the atlas
-`simit-updater` registry.
+No canix consumer was found. Canix records the project in the atlas
+`simit-updater` registry, the release prebuild registry, and a Pages-site domain
+entry, none of which import it.
