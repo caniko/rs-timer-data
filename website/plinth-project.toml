@@ -1,8 +1,7 @@
 [site]
 title = "timer_data"
-description = "Serializer-independent data types for Bevy's `Timer`."
+description = "TimerData and TimerModeData mirror Bevy's Timer as plain scalars, with optional Timer conversions plus serde and rkyv derives behind Cargo features."
 base_url = "/"
-footer_note = "Generated from repository metadata by the plinth-project FOSS sweep."
 
 [[nav]]
 label = "Overview"
@@ -10,36 +9,60 @@ href = "#overview"
 
 [[nav]]
 label = "Source"
-href = "ssh://git@github.com/caniko/rs-timer-data.git"
+href = "https://github.com/caniko/rs-timer-data"
+
+[[footer_links]]
+label = "crates.io"
+href = "https://crates.io/crates/timer_data"
 
 [[footer_links]]
 label = "Source"
-href = "ssh://git@github.com/caniko/rs-timer-data.git"
+href = "https://github.com/caniko/rs-timer-data"
 
 [[pages]]
 slug = "index"
 title = "timer_data"
-description = "Serializer-independent data types for Bevy's `Timer`."
+description = "TimerData and TimerModeData mirror Bevy's Timer as plain scalars, with optional Timer conversions plus serde and rkyv derives behind Cargo features."
 
 [[pages.sections]]
 type = "hero"
-title = "timer_data"
-tagline = "Serializer-independent data types for Bevy's `Timer`."
-subtitle = "Serializer-independent data types for Bevy's `Timer`."
+title = "Bevy timers that survive a save file"
+tagline = "Bevy timers your serializer can actually see."
+subtitle = "TimerData and TimerModeData mirror Bevy's Timer as plain scalars, with optional Timer conversions plus serde and rkyv derives behind Cargo features."
 
 [[pages.sections.ctas]]
 label = "View source"
-href = "ssh://git@github.com/caniko/rs-timer-data.git"
+href = "https://github.com/caniko/rs-timer-data"
 primary = true
+
+[[pages.sections.ctas]]
+label = "crates.io"
+href = "https://crates.io/crates/timer_data"
 
 [[pages.sections]]
 type = "feature_grid"
 id = "overview"
 
 [[pages.sections.features]]
-title = "Rust"
-description = "Project technology detected from repository manifests."
+title = "Plain scalars, no engine type"
+description = "A timer becomes a duration in nanoseconds, the elapsed time, a finished flag and a mode enum. The stored form carries no Bevy type, so reading it back does not depend on a Timer layout."
 
 [[pages.sections.features]]
-title = "Nix"
-description = "Project technology detected from repository manifests."
+title = "Serde helper for Timer fields"
+description = "With the bevy and serde features on, the crate also works as a serde with-module: keep a real Timer in your component and let TimerData handle the serialized shape."
+
+[[pages.sections.features]]
+title = "Conversions both ways"
+description = "The bevy feature adds From and Into between Timer and TimerData, so a system can restore saved state into a live timer and write it back out again without copying fields by hand."
+
+[[pages.sections.features]]
+title = "rkyv for archived state"
+description = "An optional rkyv feature derives Archive, Serialize and Deserialize against rkyv 0.8. Bevy and serde are on by default; turn them off when only the plain data types are wanted."
+
+[[pages.sections]]
+type = "content"
+id = "compatibility"
+heading = "Compatibility"
+html = '''
+<p>Bevy 0.18 pairs with timer_data 0.1. Licensed under MIT or Apache-2.0, at your option.</p>
+'''
